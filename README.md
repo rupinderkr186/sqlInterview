@@ -1,4 +1,4 @@
-# Sql(Structured Query Language) Interview Questions & Answers
+# Part 1- Sql(Structured Query Language) Interview Questions & Answers
 ## 1) What is normalization?  
 Normalization is a database design technique to remove redunadant data.
 ## 2) How to implement normalization?
@@ -109,4 +109,108 @@ All matching and unmatching records from both left and right table are selected.
 Cross join is cartesian. Every record of one table is joined with other table records.
 ![image](https://github.com/user-attachments/assets/08c92e5a-0cc2-469f-ab34-56e05149ef62)
 
+# Part 2-Sql(Structured Query Language) Interview Questions & Answers
+## 24) Why do we need UNION ?
+Union combines two result sets.  
+  
+select [ProductId], [ProductName] from [LearnSql].[dbo].[mst_Products]  
+union  
+select [ProductId], [ProductName] from [LearnSql].[dbo].[mst_ExpiredProducts]
 
+![image](https://github.com/user-attachments/assets/81a2a173-c9c7-4e78-8377-4628d3da8616)
+
+## 25) Differentiate between Union vs Union All ?
+<ins>Union</ins> combines result sets and <ins>excludes duplicates</ins> while <ins>Union all</ins> also combines result set but <ins>includes duplicates</ins>.  
+
+select [ProductId],[ProductName] from [LearnSql].[dbo].[mst_Products]  
+union all  
+select [ProductId],[ProductName] from [LearnSql].[dbo].[mst_ExpiredProducts]
+
+![image](https://github.com/user-attachments/assets/80a3b351-7976-4142-986a-4d4ed452812e)
+
+## 26) can we have unequal columns in Union?
+No.  
+
+select[ProductName] from [LearnSql].[dbo].[mst_Products]  
+union all  
+select [ProductId],[ProductName] from [LearnSql].[dbo].[mst_ExpiredProducts]
+
+![image](https://github.com/user-attachments/assets/64f18106-763c-4c05-b70a-7f48e44a6737)
+
+## 27) Can column have different data types in Union ?
+No.  
+
+select [ProductName],[ProductId] from [LearnSql].[dbo].[mst_Products]  
+union all  
+select [ProductId],[ProductName] from [LearnSql].[dbo].[mst_ExpiredProducts]  
+
+![image](https://github.com/user-attachments/assets/84968336-d1d1-4fb1-8110-4921b92ed38d)
+
+## 28) Which Aggregate function have you used ?
+Sum,Avg,Max, Min and Count.  
+
+select sum([CustomerAmount]),  
+Avg([CustomerAmount]) ,  
+min([CustomerAmount]),  
+max([CustomerAmount]),  
+Count(*)  
+from [dbo].[txn_Customer]  
+
+![image](https://github.com/user-attachments/assets/9ad181a1-38df-4abe-bc8d-b8287c6002c1)
+
+## 29) When to use Group by ?
+It helps to convert rows in to summary rows using common values.  
+
+select [ProductName],sum([CustomerAmount]) from [dbo].[txn_Customer]  
+group by [ProductName]
+
+![image](https://github.com/user-attachments/assets/750ceba9-9913-4961-938a-0877b52a0816)
+
+## 30) Can we select column which is not part of group by ?
+No. In a group by you can only select columns which are present in groupby.  
+
+select[CustomerName],[ProductName],sum([CustomerAmount]) from [dbo].[txn_Customer]  
+group by [ProductName]
+
+![image](https://github.com/user-attachments/assets/fa718293-eaac-40ad-a00a-680a57d4bacb)
+
+## 31) What is having clause ?
+Having clause helps to filter group by data.  
+
+select [ProductName],sum([CustomerAmount]) from [dbo].[txn_Customer]  
+group by [ProductName]  
+having [ProductName]='shoes'  
+
+![image](https://github.com/user-attachments/assets/01adec43-cc4a-4adf-a509-1969d20a20ae)
+
+## 32) Having clause vs Where clause
+![image](https://github.com/user-attachments/assets/a717edef-b813-4b02-9d26-d83c83afbd3a)
+
+![image](https://github.com/user-attachments/assets/76228fb0-0c3d-4614-aa8e-1864baa79c70)
+
+## 33) How can we sort records ?
+Sorting is done by using order by clause.  
+
+select * from [dbo].[txn_Customer] **order by** [CustomerAmount] **desc / asc**
+
+![image](https://github.com/user-attachments/assets/e93f0104-dc11-4d09-9e50-0ac542621382)
+
+## 34) What’s the default sort ?
+Ascending.
+
+## 35) How can we remove duplicates ?
+By using Distinct keyword.  
+
+select **distinct** [ProductName] from [dbo].[txn_Customer]
+
+![image](https://github.com/user-attachments/assets/2685c4d8-8da3-4647-92ad-31da4d41c57c)
+
+## 36) Select the first top X records ?
+By using the top keyword.  
+
+select **top 2** * from [dbo].[txn_Customer]
+![image](https://github.com/user-attachments/assets/078a905f-1314-4eb0-ba63-0fe114365f50)
+
+## 37) How to handle NULLS ?
+By using ISNULL function.
+![image](https://github.com/user-attachments/assets/0fd0f5db-168b-492b-8b9f-0f5c68802fa0)
