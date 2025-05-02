@@ -257,3 +257,38 @@ Between clause helps to find values in between the range.
 select * from txn_Customer where CustomerAmount **between** -200 and 200  
 
 ![image](https://github.com/user-attachments/assets/f6a7b54a-4249-47b5-9255-8ff518124533)
+
+# Part 3- Sql(Structured Query Language) Interview Questions & Answers
+## 44) Explain SubQuery ?
+Subquery is a query inside a query (nested query).In Subquery first the inner query gets evaluated and then outer query.
+![image](https://github.com/user-attachments/assets/6a4a7622-3746-4795-a53f-bff52da86e17)
+
+## 45) Can inner Subquery return multiple results ?
+Yes , Inner query can return multiple results but then in where clause you will need to us the “IN” keyword.
+
+## 46) What is Co-related Query ?
+In co-related query first the outer query sends records to the inner query , inner query then evaluates and sends its back to the outer query.
+![image](https://github.com/user-attachments/assets/f5c96d2a-5e83-4438-978f-5780c2944552)
+
+## 47) Differentiate between Joins and SubQuery ?
+![image](https://github.com/user-attachments/assets/66776053-22ee-4943-a934-1a206c0271fe)
+
+![image](https://github.com/user-attachments/assets/104fb79d-65a5-411e-9d54-b9ba6692d483)
+
+![image](https://github.com/user-attachments/assets/c6555978-fbf0-4ef5-b581-3675988b2bf9)
+
+## 48) Performance Joins vs Subquery?
+Most of the times Joins should perform better. But not necessarily, its possible subquery can be faster many times. So SQL plan needs to be looked in to determine whose performance can be better.
+![image](https://github.com/user-attachments/assets/70696f7f-9aa0-4540-b890-e231e4d960ee)
+
+## 49) Select the top nth highest salary using top and order by?
+Example of a Query to find the second highest salary i.e. n=2 :  
+
+Select Top 1 EmployeeSalary from (select distinct Top 2 EmployeeSalary from tblEmployee order by EmployeeSalary desc) as innerquery order by EmployeeSalary asc
+
+![image](https://github.com/user-attachments/assets/be4dd2a5-e292-427c-bd0f-ec92b40abc2b)
+
+## 50) Select the top nth highest salary using correlated Queries?
+Example of a Query to find the 2nd highest salary i.e. n=2 :  
+
+Select E1.EmployeeSalary from tblEmployee as E1 where 2=(Select count(*) from tblEmployee as E2 where E2.EmployeeSalary>=E1.EmployeeSalary)
