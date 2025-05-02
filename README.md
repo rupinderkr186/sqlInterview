@@ -254,5 +254,6 @@ txn_Customer t2 on t1.id=t2.Referenceid_fk
 ## 43) Explain the between clause ?
 Between clause helps to find values in between the range.  
 
-select * from txn_Customer where CustomerAmount **between** -200 and 200
+select * from txn_Customer where CustomerAmount **between** -200 and 200  
+
 ![image](https://github.com/user-attachments/assets/f6a7b54a-4249-47b5-9255-8ff518124533)
