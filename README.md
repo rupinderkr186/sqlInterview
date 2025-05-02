@@ -214,3 +214,45 @@ select **top 2** * from [dbo].[txn_Customer]
 ## 37) How to handle NULLS ?
 By using ISNULL function.
 ![image](https://github.com/user-attachments/assets/0fd0f5db-168b-492b-8b9f-0f5c68802fa0)
+
+## 38) What is use of wild cards ?
+Wild card helps in pattern matching.  
+
+select * from [dbo].[txn_Customer] where [CustomerName] like 's%';
+
+![image](https://github.com/user-attachments/assets/3a39cfc2-0691-407c-975f-6c519bab0b68)
+
+## 39) What is the use of Alias ?
+Alias helps to give different display names to original column names.  
+
+select [CustomerName] as name ,[CustomerAmount] as Amount, [ProductName] as Product from [dbo].[txn_Customer]
+![image](https://github.com/user-attachments/assets/d7b40ad6-2696-460f-af7a-8a245932191e)
+
+## 40) How to write a case statement ?
+select [CustomerName],  
+**case**  
+when [CustomerAmount]<200 then 'less than 200'  
+when [CustomerAmount]>200 then 'more than 200'  
+else 'NA'  
+END as CustomerAmount,[CustomerAmount] from [dbo].[txn_Customer]  
+![image](https://github.com/user-attachments/assets/fc7635c8-10ee-4429-aefb-7455cb502bed)
+
+## 41) What is self reference tables ?
+Self reference tables are those tables who have primary key and foreign key in the same table.
+![image](https://github.com/user-attachments/assets/7e22b84e-52c2-4664-8a81-c920c237663b)
+
+## 42) What is self join ?
+When you make joins ( inner,left,right) with same table it’s called as Self join.  
+
+select t1.Id,t1.Referenceid_fk, t2.CustomerName as name,t1.CustomerName as Reference
+from txn_Customer as t1
+inner join
+txn_Customer t2 on t1.id=t2.Referenceid_fk
+![image](https://github.com/user-attachments/assets/3ba89752-07b1-452f-a9ca-9e39417f703c)
+
+
+## 43) Explain the between clause ?
+Between clause helps to find values in between the range.  
+
+select * from txn_Customer where CustomerAmount **between** -200 and 200
+![image](https://github.com/user-attachments/assets/f6a7b54a-4249-47b5-9255-8ff518124533)
