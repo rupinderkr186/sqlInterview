@@ -292,3 +292,39 @@ Select Top 1 EmployeeSalary from (select distinct Top 2 EmployeeSalary from tblE
 Example of a Query to find the 2nd highest salary i.e. n=2 :  
 
 Select E1.EmployeeSalary from tblEmployee as E1 where 2=(Select count(*) from tblEmployee as E2 where E2.EmployeeSalary>=E1.EmployeeSalary)
+
+![image](https://github.com/user-attachments/assets/173a41fa-66f2-4499-907c-9e8cccad1283)
+
+## 51) Select top nth using TSQL
+Example of a Query to find the 2nd highest salary i.e. n= 2-1= 1  
+
+Select Distinct(EmployeeSalary) from tblEmployee order by EmployeeSalary DESC **offset** 1 rows **Fetch next** 1 rows only  
+
+**Note**: Offset 1 rows means skip first row. So if we have to select the 2nd highest then offset skip 1st row and then fetch 1st row from the remaining rows which is the second highest.
+![image](https://github.com/user-attachments/assets/08432ed0-e212-4633-9f6d-79becc23c33e)
+
+## 52) Performance comparison of all the methods.
+![image](https://github.com/user-attachments/assets/e2ac6752-3c46-46f7-aa0e-744c0c7a4a70)
+
+![image](https://github.com/user-attachments/assets/93360867-b617-4240-960c-90f1e3711fd9)
+
+# Part 4- Sql(Structured Query Language) Interview Questions & Answers
+## 53) What is CTE ?
+
+## 54) Can we execute CTE multiple times ?
+
+## 55) What is use of CTE ?
+
+## 56) How to write a recursive CTE ?
+
+## 57) Can we see some real world examples of CTE ?
+
+## 58) Can we perform insert updates on CTEs ?
+
+## 59) Does is update the tables physically ?
+
+## 60) What are temporary tables?
+
+## 61) Temp tables vs CTE
+
+## 62) Performance CTE vs Temp
